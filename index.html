@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Declaração do Victor</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f4f4f4; margin: 0; }
+        .container { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; width: 350px; }
+        h2 { color: #333; }
+        input { padding: 12px; border: 2px solid #ddd; border-radius: 8px; margin-bottom: 15px; width: 100%; box-sizing: border-box; outline: none; transition: border-color 0.3s; }
+        input:focus { border-color: #e74c3c; }
+        button { padding: 12px 25px; background-color: #e74c3c; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold; width: 100%; }
+        button:hover { background-color: #c0392b; }
+        #resultado { margin-top: 20px; font-size: 1.1rem; line-height: 1.4; color: #444; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Me Diga Seu Nome:</h2>
+    <input type="text" id="nomeInput" placeholder="Digite o nome completo...">
+    <br>
+    <button onclick="verificarNome()">Verificar</button>
+    <div id="resultado"></div>
+</div>
+
+<script>
+    function verificarNome() {
+        const input = document.getElementById('nomeInput').value;
+        const display = document.getElementById('resultado');
+        
+        // Convertemos para minúsculo para ignorar o "Case Sensitive"
+        const nomeDigitado = input.toLowerCase().trim();
+        const alvo = "darliane aguiar ferreira";
+
+        if (nomeDigitado === "") {
+            display.innerHTML = "⚠️ Por favor, digite um nome.";
+            return;
+        }
+
+        // Verifica se o nome digitado é EXATAMENTE o dela ou se contém partes importantes
+        // Ex: Se digitar apenas "Darliane", ele ainda vai aceitar.
+        if (nomeDigitado === alvo || alvo.includes(nomeDigitado) && nomeDigitado.length > 3) {
+            display.innerHTML = `✨ O nome <strong>${input}</strong> é o mesmo do amor da vida do Victor! ❤️`;
+            display.style.color = "#e74c3c";
+        } else {
+            // Caso não seja o nome dela
+            display.innerHTML = `❌ Esta pessoa (${input}) não tem nem 1% da beleza de <strong>Darliane</strong>.`;
+            display.style.color = "#555";
+        }
+    }
+</script>
+
+</body>
+</html>
